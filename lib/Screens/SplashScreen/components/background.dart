@@ -17,12 +17,12 @@ class Background extends StatelessWidget {
         alignment: Alignment.center,
         children: <Widget>[
           Positioned(
-            top: 25,
+            top: 0,
             left: 0,
             child: Image.asset(
-              "assets/images/logo_fundo.png",
+              "assets/images/fundo.png",
               width: size.width,
-              height: 450,
+              height: 475,
               fit: BoxFit.fill,
             ),
           ),
