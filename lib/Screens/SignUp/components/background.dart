@@ -36,10 +36,11 @@ class Background extends StatelessWidget {
           ),
           const Positioned(
             top: 55,
-            child: Text("LOGIN",
+            left: 25,
+            child: Text("CADASTRAR",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 50,
+                    fontSize: 45,
                     fontFamily: "Kanit",
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w600),

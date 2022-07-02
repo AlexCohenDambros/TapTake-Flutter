@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tap_take/Screens/Login/login_screen.dart';
+import 'package:tap_take/Screens/SignUp/signup_screen.dart';
 import 'package:tap_take/Screens/SplashScreen/components/background.dart';
 import 'package:tap_take/components_main/rounded_button.dart';
 import 'package:tap_take/constants.dart';
@@ -43,7 +44,16 @@ class Body extends StatelessWidget {
                 textAlign: TextAlign.center),
             RoundedButton(
               text: "CADASTRAR",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const SignUpScreen();
+                    },
+                  ),
+                );
+              },
               color: Colors.white,
               textColor: kSecondaryColor,
             ),
