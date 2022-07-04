@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tap_take/Screens/Login/login_screen.dart';
+import 'package:tap_take/Screens/Menu/menu_screen.dart';
 import 'package:tap_take/Screens/SignUp/components/background.dart';
 import 'package:tap_take/Screens/SignUp/components/or_divider.dart';
 import 'package:tap_take/components_main/already_have_an_account_acheck.dart';
@@ -38,7 +39,16 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.1),
             RoundedButton(
               text: "CADASTRAR",
-              press: () {},
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const MenuScreen();
+                    },
+                  ),
+                );
+              },
               color: kPrimaryColor,
               textColor: Colors.white,
             ),
