@@ -46,7 +46,7 @@ class Body extends StatelessWidget {
             AlreadyHaveAnAccountCheck(
               login: false,
               press: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
@@ -67,7 +67,7 @@ class Body extends StatelessWidget {
                   press: () {},
                 ),
                 SocialButton(
-                  icon: Icons.email,
+                  icon: Icons.g_mobiledata,
                   press: () {},
                 ),
               ],

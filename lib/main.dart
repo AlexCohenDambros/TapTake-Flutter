@@ -3,11 +3,11 @@ import 'package:tap_take/Screens/SplashScreen/splash_screen.dart';
 import 'package:tap_take/constants.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TapTake());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class TapTake extends StatelessWidget {
+  const TapTake({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
