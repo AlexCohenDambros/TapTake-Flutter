@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tap_take/components_main/list_menu.dart';
+import 'package:tap_take/Screens/Menu/cart.dart';
+import 'package:tap_take/Screens/Menu/delivery.dart';
+import 'package:tap_take/Screens/Menu/edit_profile.dart';
+import 'package:tap_take/Screens/Menu/order.dart';
+import 'package:tap_take/Screens/Menu/restaurants.dart';
+import 'package:tap_take/Screens/Menu/university.dart';
+import 'package:tap_take/components_main/list_sidebar.dart';
 import 'package:tap_take/constants.dart';
 
 class NavBar extends StatelessWidget {
@@ -46,15 +52,90 @@ class NavBar extends StatelessWidget {
               ),
             ),
           ),
-          ListMenu(icon: Icons.restaurant, text: "Restaurante", press: () {}),
-          ListMenu(icon: Icons.edit, text: "Editar Perfil", press: () {}),
-          ListMenu(icon: Icons.school, text: "Universidades", press: () {}),
+          ListMenu(
+              icon: Icons.restaurant,
+              text: "Restaurantes",
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const MenuScreen(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }),
+          ListMenu(
+              icon: Icons.edit,
+              text: "Editar Perfil",
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const EditProfile(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }),
+          ListMenu(
+              icon: Icons.school,
+              text: "Universidades",
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const University(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }),
           ListMenu(
               icon: Icons.shopping_cart_outlined,
               text: "Carrinho",
-              press: () {}),
-          ListMenu(icon: Icons.card_travel, text: "Pedidos", press: () {}),
-          ListMenu(icon: Icons.delivery_dining, text: "Delivery", press: () {}),
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const Cart(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }),
+          ListMenu(
+              icon: Icons.card_travel,
+              text: "Pedidos",
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const Order(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }),
+          ListMenu(
+              icon: Icons.delivery_dining,
+              text: "Delivery",
+              press: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const Delivery(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              }),
         ],
       ),
     );

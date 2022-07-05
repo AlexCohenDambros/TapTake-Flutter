@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tap_take/Screens/Login/login_screen.dart';
-import 'package:tap_take/Screens/Menu/menu_screen.dart';
+import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/Screens/SignUp/components/background.dart';
 import 'package:tap_take/Screens/SignUp/components/or_divider.dart';
 import 'package:tap_take/components_main/already_have_an_account_acheck.dart';
@@ -42,10 +42,11 @@ class Body extends StatelessWidget {
               press: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const MenuScreen();
-                    },
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const MenuScreen(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
                   ),
                 );
               },
@@ -58,10 +59,11 @@ class Body extends StatelessWidget {
               press: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const LoginScreen();
-                    },
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const LoginScreen(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
                   ),
                 );
               },
