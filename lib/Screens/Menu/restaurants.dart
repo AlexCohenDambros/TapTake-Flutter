@@ -65,23 +65,23 @@ class MenuScreen extends StatelessWidget {
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 1",
-                      ratingRes: 3.0),
+                      ratingRes: 4.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 2",
-                      ratingRes: 3.0),
+                      ratingRes: 4.0),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 3",
-                      ratingRes: 3.0),
+                      ratingRes: 5.0),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 4",
-                      ratingRes: 3.0),
+                      ratingRes: 3.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 5",
-                      ratingRes: 3.0),
+                      ratingRes: 2.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 6",
@@ -182,19 +182,16 @@ class _CardRestaurant extends StatelessWidget {
                     ],
                   ),
                   Center(
-                    child: RatingBar.builder(
-                      itemSize: 18,
-                      initialRating: ratingRes,
-                      minRating: 1,
+                    child: RatingBarIndicator(
+                      itemSize: 20,
+                      rating: ratingRes,
                       direction: Axis.horizontal,
-                      allowHalfRating: true,
                       itemCount: 5,
                       itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                       itemBuilder: (context, _) => const Icon(
                         Icons.star,
                         color: Colors.amber,
                       ),
-                      onRatingUpdate: (double value) {},
                     ),
                   )
                 ],
