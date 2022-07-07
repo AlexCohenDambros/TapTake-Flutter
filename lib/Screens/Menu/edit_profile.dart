@@ -113,6 +113,7 @@ class _ChangePictureState extends State<EditProfile> {
     Widget continueButton = TextButton(
       child: const Text("Continuar"),
       onPressed: () {
+        Navigator.pop(context);
         Navigator.pushReplacement(
           context,
           PageRouteBuilder(
