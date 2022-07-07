@@ -37,6 +37,18 @@ class UniversityPageState extends State<University> {
       "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "image": "assets/images/logo.png"
     },
+    {
+      "id": 5,
+      "name": "PUCSP",
+      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "image": "assets/images/logo.png"
+    },
+    {
+      "id": 6,
+      "name": "PUCSP",
+      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "image": "assets/images/logo.png"
+    },
   ];
 
   // ignore: unused_field
@@ -110,14 +122,17 @@ class UniversityPageState extends State<University> {
                       itemBuilder: (context, index) => Card(
                         key: ValueKey(_foundUniversity[index]["id"]),
                         color: Colors.grey[850],
-                        elevation: 4,
+                        elevation: 5,
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         child: ListTile(
+                          contentPadding: const EdgeInsets.all(20),
+                          horizontalTitleGap: 10,
+                          minVerticalPadding: 10,
                           leading: SizedBox(
-                              height: 70,
                               width: 70,
                               child: Image.asset(
-                                  _foundUniversity[index]['image'])),
+                                  _foundUniversity[index]['image'],
+                                  fit: BoxFit.fill)),
                           title: Text(
                             _foundUniversity[index]['name'],
                             style: const TextStyle(
@@ -131,6 +146,10 @@ class UniversityPageState extends State<University> {
                                 fontSize: 13,
                                 color: Colors.white,
                                 fontWeight: FontWeight.normal),
+                          ),
+                          trailing: const Icon(
+                            Icons.star_border,
+                            color: Colors.white,
                           ),
                         ),
                       ),
