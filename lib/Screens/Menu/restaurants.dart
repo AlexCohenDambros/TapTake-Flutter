@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:tap_take/Screens/Menu/components/navbar.dart';
+import 'package:tap_take/Screens/Scheduling/scheduling.dart';
 import 'package:tap_take/constants.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -61,30 +62,47 @@ class MenuScreen extends StatelessWidget {
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
                 scrollDirection: Axis.vertical,
-                children: const [
+                children: [
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 1",
+                      press: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    const Scheduling(),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
+                          ),
+                        );
+                      },
                       ratingRes: 4.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 2",
+                      press: () {},
                       ratingRes: 4.0),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 3",
+                      press: () {},
                       ratingRes: 5.0),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 4",
+                      press: () {},
                       ratingRes: 3.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 5",
+                      press: () {},
                       ratingRes: 2.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 6",
+                      press: () {},
                       ratingRes: 3.0),
                 ],
               ),
@@ -132,12 +150,14 @@ class _allCategories extends StatelessWidget {
 class _CardRestaurant extends StatelessWidget {
   final String image;
   final String title;
+  final VoidCallback press;
   final double ratingRes;
   const _CardRestaurant({
     Key? key,
     required this.image,
     required this.title,
     required this.ratingRes,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -146,10 +166,11 @@ class _CardRestaurant extends StatelessWidget {
       margin: const EdgeInsets.only(
         right: 10,
       ),
-      decoration: BoxDecoration(
-          color: kSecondaryColor, borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: kSecondaryColor,
+        ),
+        onPressed: press,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,

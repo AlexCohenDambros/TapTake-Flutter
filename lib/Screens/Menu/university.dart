@@ -17,37 +17,36 @@ class UniversityPageState extends State<University> {
       "name": "PUCPR",
       "description":
           "Endereço: R. Imac. Conceição, 1155 - Prado Velho, Curitiba - PR, 80215-901",
-      "image": "assets/images/logo.png"
     },
     {
       "id": 2,
       "name": "UNICURITIBA",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "image": "assets/images/logo.png"
+      "description":
+          "Endereço: R. Chile, 1678 - Rebouças, Curitiba - PR, 80220-181",
     },
     {
       "id": 3,
       "name": "POSITIVO",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "image": "assets/images/logo.png"
+      "description":
+          "Endereço: 5.300, R. Prof. Pedro Viriato Parigot de Souza, 5300 - Campo Comprido, Curitiba - PR, 81280-330",
     },
     {
       "id": 4,
       "name": "PUCSP",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "image": "assets/images/logo.png"
+      "description":
+          "Endereço: R. Monte Alegre, 984 - Perdizes, São Paulo - SP, 05014-901",
     },
     {
       "id": 5,
-      "name": "PUCSP",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "image": "assets/images/logo.png"
+      "name": "PUC-RIO",
+      "description":
+          "Endereço: Terminal da PUC - Gávea, Rio de Janeiro - RJ, 22541-041",
     },
     {
       "id": 6,
-      "name": "PUCSP",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "image": "assets/images/logo.png"
+      "name": "PUCRS",
+      "description":
+          "Endereço: Av. Ipiranga, 6681 - Partenon, Porto Alegre - RS, 90619-900",
     },
   ];
 
@@ -128,11 +127,6 @@ class UniversityPageState extends State<University> {
                           contentPadding: const EdgeInsets.all(20),
                           horizontalTitleGap: 10,
                           minVerticalPadding: 10,
-                          leading: SizedBox(
-                              width: 70,
-                              child: Image.asset(
-                                  _foundUniversity[index]['image'],
-                                  fit: BoxFit.fill)),
                           title: Text(
                             _foundUniversity[index]['name'],
                             style: const TextStyle(

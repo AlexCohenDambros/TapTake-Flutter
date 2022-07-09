@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tap_take/Screens/SplashScreen/splash_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/constants.dart';
 
 void main() {
-  runApp(const TapTake());
+  initializeDateFormatting().then((_) => runApp(const TapTake()));
 }
 
 class TapTake extends StatelessWidget {
@@ -18,7 +19,7 @@ class TapTake extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kPrimaryDarkColor),
-      home: const SplashScreen(),
+      home: const MenuScreen(),
     );
   }
 }
