@@ -29,6 +29,8 @@ class PaymentState extends State<Payment> {
     },
   ];
 
+  bool buttonActive = false;
+
   late String selectedPayment = "Nenhuma";
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,7 @@ class PaymentState extends State<Payment> {
                           onTap: () {
                             setState(() {
                               selectedPayment = _allFormsPayment[index]['name'];
+                              buttonActive = true;
                             });
                           },
                           leading:
@@ -96,24 +99,55 @@ class PaymentState extends State<Payment> {
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
-              text: "Próximo",
-              press: () {
-                Navigator.push(
-                  context,
-                  PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) =>
-                        const Payment(),
-                    transitionDuration: Duration.zero,
-                    reverseTransitionDuration: Duration.zero,
-                  ),
-                );
-              },
+              text: "Finalizar Pedido",
               color: kPrimaryColor,
               textColor: Colors.white,
+              press: buttonActive
+                  ? () {
+                      showAlertDialog(context);
+                    }
+                  : null,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) async {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: const Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continueButton = TextButton(
+      child: const Text("Finalizar"),
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.pop(context);
+        Navigator.pop(context);
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Finalizar Pedido"),
+      content:
+          const Text("Você tem certeza de que deseja finalizar o seu pedido?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
