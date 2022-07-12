@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:tap_take/Screens/Menu/components/navbar.dart';
-import 'package:tap_take/Screens/Scheduling/scheduling.dart';
 import 'package:tap_take/constants.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -27,26 +26,31 @@ class MenuScreen extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: const <Widget>[
+                children: <Widget>[
                   _allCategories(
                     image: "assets/images/salgado.png",
                     title: "Salgados",
+                    press: () {},
                   ),
                   _allCategories(
                     image: "assets/images/cafeteria.png",
                     title: "Cafeterias",
+                    press: () {},
                   ),
                   _allCategories(
                     image: "assets/images/lanches.png",
                     title: "Lanches",
+                    press: () {},
                   ),
                   _allCategories(
                     image: "assets/images/doce.png",
                     title: "Doces",
+                    press: () {},
                   ),
                   _allCategories(
                     image: "assets/images/salada.png",
                     title: "Saudável",
+                    press: () {},
                   ),
                 ],
               ),
@@ -66,18 +70,7 @@ class MenuScreen extends StatelessWidget {
                   _CardRestaurant(
                       image: "assets/images/logo.png",
                       title: "Restaurante 1",
-                      press: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) =>
-                                    const Scheduling(),
-                            transitionDuration: Duration.zero,
-                            reverseTransitionDuration: Duration.zero,
-                          ),
-                        );
-                      },
+                      press: () {},
                       ratingRes: 4.5),
                   _CardRestaurant(
                       image: "assets/images/logo.png",
@@ -116,10 +109,12 @@ class MenuScreen extends StatelessWidget {
 class _allCategories extends StatelessWidget {
   final String image;
   final String title;
+  final VoidCallback press;
   const _allCategories({
     Key? key,
     required this.image,
     required this.title,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -130,14 +125,20 @@ class _allCategories extends StatelessWidget {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage(image))),
+            MaterialButton(
+              onPressed: press,
+              padding: const EdgeInsets.all(0),
+              minWidth: 70,
+              color: kPrimaryColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Container(
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover, image: AssetImage(image))),
+              ),
             ),
             Text(title,
                 style: const TextStyle(color: Colors.white, fontSize: 18))

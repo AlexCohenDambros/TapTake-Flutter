@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/components_main/rounded_button.dart';
 import 'package:tap_take/constants.dart';
 
@@ -128,6 +129,15 @@ class PaymentState extends State<Payment> {
         Navigator.pop(context);
         Navigator.pop(context);
         Navigator.pop(context);
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const MenuScreen(),
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
+          ),
+        );
       },
     );
 

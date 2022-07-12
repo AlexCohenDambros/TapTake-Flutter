@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tap_take/Screens/Menu/components/navbar.dart';
+import 'package:tap_take/Screens/Scheduling/scheduling.dart';
+import 'package:tap_take/components_main/rounded_button.dart';
 import 'package:tap_take/constants.dart';
 
 class Cart extends StatefulWidget {
@@ -10,8 +12,20 @@ class Cart extends StatefulWidget {
 }
 
 class CartState extends State<Cart> {
+  late bool buttonActive;
+
 // ignore: unused_field
   final List<Map<String, dynamic>> _allItemsCart = [];
+
+  @override
+  initState() {
+    if (_allItemsCart.isEmpty) {
+      buttonActive = false;
+    } else {
+      buttonActive = true;
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +75,25 @@ class CartState extends State<Cart> {
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
+            ),
+            RoundedButton(
+              text: "Agendamento",
+              press: buttonActive
+                  ? () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  const Scheduling(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }
+                  : null,
+              color: kPrimaryColor,
+              textColor: Colors.white,
             ),
           ],
         ),

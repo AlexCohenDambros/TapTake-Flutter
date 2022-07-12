@@ -60,8 +60,11 @@ class _SchedulingStateState extends State<Scheduling> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              GestureDetector(
-                onTap: () async {
+              MaterialButton(
+                color: kSecondaryColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                onPressed: () async {
                   TimeOfDay? newtime = await showTimePicker(
                     context: context,
                     initialTime: time!,
