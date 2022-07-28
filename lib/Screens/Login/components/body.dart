@@ -1,10 +1,11 @@
 import 'dart:convert';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:tap_take/Screens/Login/components/background.dart';
 import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/Screens/SignUp/signup_screen.dart';
 import 'package:tap_take/components_main/already_have_an_account_acheck.dart';
+import 'package:tap_take/components_main/check_token.dart';
 import 'package:tap_take/components_main/rounded_button.dart';
 import 'package:tap_take/components_main/rounded_input_field.dart';
 import 'package:tap_take/components_main/rounded_password_field.dart';
@@ -58,6 +59,12 @@ Future<User?> Login(String email, String password) async {
   );
 
   if (response.statusCode == 200) {
+    var check_token = CheckToken();
+    // ignore: unnecessary_null_comparison
+    if (check_token != null) {
+      var box = await Hive.openBox("Login");
+      box.put("token", "teste");
+    }
     return User.fromJson(jsonDecode(response.body));
   } else {
     return null;
@@ -136,6 +143,7 @@ class _BodyState extends State<Body> {
                   });
                 } else {
                   visibility = false;
+                  Navigator.pop(context);
                   Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
