@@ -117,6 +117,7 @@ class PaymentState extends State<Payment> {
 
   showAlertDialog(BuildContext context) async {
     // set up the buttons
+    // user must tap button!
     Widget cancelButton = TextButton(
       child: const Text("Cancelar"),
       onPressed: () {
@@ -154,6 +155,7 @@ class PaymentState extends State<Payment> {
 
     // show the dialog
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return alert;
