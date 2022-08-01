@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:tap_take/Screens/Menu/cart.dart';
 import 'package:tap_take/Screens/Menu/delivery.dart';
 import 'package:tap_take/Screens/Menu/edit_profile.dart';
@@ -6,13 +7,25 @@ import 'package:tap_take/Screens/Menu/order.dart';
 import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/Screens/Menu/university.dart';
 import 'package:tap_take/Screens/SplashScreen/splash_screen.dart';
-import 'package:tap_take/components_main/check_token.dart';
 import 'package:tap_take/components_main/list_sidebar.dart';
 import 'package:tap_take/constants.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:tap_take/services/user_credentials.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
+
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  @override
+  void initState() {
+    super.initState();
+    GetUserToken();
+  }
+
+  void GetUserToken() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -169,12 +182,7 @@ class NavBar extends StatelessWidget {
     Widget continueButton = TextButton(
       child: const Text("Confirmar"),
       onPressed: () async {
-        var check_token = CheckToken();
-        // ignore: unnecessary_null_comparison
-        if (check_token != null) {
-          var box = await Hive.openBox("Login");
-          box.delete("token");
-        }
+        GetIt.I.get<UserCredentialServices>().deleteToken();
         Navigator.pop(context);
         Navigator.pushReplacement(
           context,
