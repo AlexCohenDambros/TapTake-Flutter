@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/Screens/SplashScreen/splash_screen.dart';
 import 'package:tap_take/constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:tap_take/Screens/Loading/loading.dart';
 import 'package:tap_take/services/user_credentials.dart';
+import 'package:tap_take/services/user_data.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
   UserCredentialServices userCred = UserCredentialServices();
+  UserDataServices userData = UserDataServices();
   await userCred.setup();
+  await userData.setup();
+
   GetIt.I.registerSingleton(userCred);
+  GetIt.I.registerSingleton(userData);
+
   initializeDateFormatting().then((_) => runApp(const TapTake()));
 }
 
@@ -39,6 +45,7 @@ class _TapTakeState extends State<TapTake> {
     if (check_token != null) {
       setState(() {
         check_user = true;
+        GetIt.I.get<UserDataServices>().getDataUser();
       });
     }
     setState(() {
@@ -58,7 +65,7 @@ class _TapTakeState extends State<TapTake> {
       home: check_user
           ? const MenuScreen()
           : is_loading
-              ? PlatformScaffold()
+              ? LoadingScreen()
               : const SplashScreen(),
     );
   }
