@@ -11,13 +11,8 @@ import 'package:tap_take/services/user_data.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
-  UserCredentialServices userCred = UserCredentialServices();
-  UserDataServices userData = UserDataServices();
-  await userCred.setup();
-  await userData.setup();
-
-  GetIt.I.registerSingleton(userCred);
-  GetIt.I.registerSingleton(userData);
+  GetIt.I.registerSingleton(UserCredentialServices());
+  GetIt.I.registerSingleton(UserDataServices());
 
   initializeDateFormatting().then((_) => runApp(const TapTake()));
 }
@@ -41,6 +36,9 @@ class _TapTakeState extends State<TapTake> {
   }
 
   void Check_Login() async {
+    await GetIt.I.get<UserCredentialServices>().awaitReady();
+    await GetIt.I.get<UserDataServices>().awaitReady();
+
     var check_token = GetIt.I.get<UserCredentialServices>().getToken();
     if (check_token != null) {
       setState(() {

@@ -9,6 +9,7 @@ import 'package:tap_take/components_main/rounded_input_field.dart';
 import 'package:tap_take/components_main/rounded_password_field.dart';
 import 'package:tap_take/constants.dart';
 import 'package:tap_take/services/user_credentials.dart';
+import 'package:tap_take/services/user_data.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -97,6 +98,7 @@ class _BodyState extends State<Body> {
                   });
                 } else {
                   visibility = false;
+                  GetIt.I.get<UserDataServices>().getDataUser();
                   Navigator.pop(context);
                   Navigator.pushReplacement(
                     context,

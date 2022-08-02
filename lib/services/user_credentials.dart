@@ -2,14 +2,21 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class UserCredentialServices {
+import 'package:tap_take/constants.dart';
+
+class UserCredentialServices with ReadyNotifier {
+  UserCredentialServices() {
+    setup();
+  }
+
   Future<void> setup() async {
     await Hive.openBox("Credentials");
+    getReady();
   }
 
   String? getToken() {
     var box = Hive.box("Credentials");
-    return box.get("token") as String?;
+    return box.get("token").replaceAll('"', '');
   }
 
   Future<bool> login(String email, String password) async {
