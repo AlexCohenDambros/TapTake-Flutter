@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tap_take/Screens/Menu/components/navbar.dart';
 import 'package:tap_take/Screens/Menu/restaurants.dart';
 import 'package:tap_take/components_main/rounded_button.dart';
 import 'package:tap_take/components_main/rounded_input_field.dart';
 import 'package:tap_take/constants.dart';
+import 'package:tap_take/services/user_data.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -37,7 +39,7 @@ class _ChangePictureState extends State<EditProfile> {
               imageFile == null
                   ? ClipOval(
                       child: Image.asset(
-                        "assets/images/foto_perfil_teste.png",
+                        GetIt.I.get<UserDataServices>().getProfilePicture(),
                         height: 120,
                         width: 120,
                         fit: BoxFit.cover,

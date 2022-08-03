@@ -43,7 +43,9 @@ class _TapTakeState extends State<TapTake> {
     if (check_token != null) {
       setState(() {
         check_user = true;
-        GetIt.I.get<UserDataServices>().getDataUser();
+        try {
+          GetIt.I.get<UserDataServices>().getDataUser();
+        } on Exception catch (_) {}
       });
     }
     setState(() {

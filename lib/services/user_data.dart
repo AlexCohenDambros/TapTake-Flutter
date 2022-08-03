@@ -58,7 +58,7 @@ class UserDataServices with ReadyNotifier {
       var box = Hive.box("UserData");
       await box.put("Name", userData.name);
       await box.put("Email", userData.email);
-      await box.put("ProfilePicture", userData.profilePicture);
+      //await box.put("ProfilePicture", userData.profilePicture);
     }
   }
 }
