@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:tap_take/constants.dart';
+import 'package:tap_take/components_main/notifier.dart';
 
 class UserCredentialServices with ReadyNotifier {
   UserCredentialServices() {
@@ -16,7 +16,10 @@ class UserCredentialServices with ReadyNotifier {
 
   String? getToken() {
     var box = Hive.box("Credentials");
-    return box.get("token").replaceAll('"', '');
+    if (box.get("token") != null) {
+      return box.get("token").replaceAll('"', '');
+    }
+    return null;
   }
 
   Future<bool> login(String email, String password) async {
@@ -34,7 +37,6 @@ class UserCredentialServices with ReadyNotifier {
     if (response.statusCode == 200) {
       var box = Hive.box("Credentials");
       await box.put("token", response.body);
-
       return true;
     } else {
       return false;

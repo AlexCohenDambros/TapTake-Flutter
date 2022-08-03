@@ -10,6 +10,7 @@ import 'package:tap_take/Screens/SplashScreen/splash_screen.dart';
 import 'package:tap_take/components_main/list_sidebar.dart';
 import 'package:tap_take/constants.dart';
 import 'package:tap_take/services/user_credentials.dart';
+import 'package:tap_take/services/user_data.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -35,15 +36,15 @@ class _NavBarState extends State<NavBar> {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text(
-              "Nome Teste",
+            accountName: Text(
+              GetIt.I.get<UserDataServices>().getName(),
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            accountEmail: const Text(
-              "exemplo@gmail.com",
+            accountEmail: Text(
+              GetIt.I.get<UserDataServices>().getEmail(),
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.normal,
