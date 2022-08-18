@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'dart:ffi';
 
-import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:tap_take/components_main/notifier.dart';
-import 'package:tap_take/services/user_credentials.dart';
 
 class RestaurantDataService with ReadyNotifier {
   RestaurantDataService() {
@@ -56,9 +53,7 @@ class RestaurantDataService with ReadyNotifier {
     final response = await http.get(
       Uri.parse('http://172.21.3.58:8090/restaurant'),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization':
-            'Bearer ${GetIt.I.get<>().getToken()}'
+        'Content-Type': 'application/json; charset=UTF-8'
       },
     );
 

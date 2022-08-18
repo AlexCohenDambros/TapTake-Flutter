@@ -6,6 +6,7 @@ import 'package:tap_take/Screens/SplashScreen/splash_screen.dart';
 import 'package:tap_take/constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tap_take/Screens/Loading/loading.dart';
+import 'package:tap_take/services/university_data.dart';
 import 'package:tap_take/services/user_credentials.dart';
 import 'package:tap_take/services/user_data.dart';
 
@@ -13,6 +14,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   GetIt.I.registerSingleton(UserCredentialServices());
   GetIt.I.registerSingleton(UserDataServices());
+  GetIt.I.registerSingleton(UniversityService());
 
   initializeDateFormatting().then((_) => runApp(const TapTake()));
 }
@@ -38,6 +40,7 @@ class _TapTakeState extends State<TapTake> {
   void Check_Login() async {
     await GetIt.I.get<UserCredentialServices>().awaitReady();
     await GetIt.I.get<UserDataServices>().awaitReady();
+    await GetIt.I.get<UniversityService>().awaitReady();
 
     var check_token = GetIt.I.get<UserCredentialServices>().getToken();
     if (check_token != null) {
